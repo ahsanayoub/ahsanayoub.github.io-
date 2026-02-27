@@ -51,6 +51,7 @@ def upgrade() -> None:
         sa.Column("last_name", sa.String(length=100), nullable=False),
         sa.Column("email", sa.String(length=255), nullable=False),
         sa.Column("role", user_role, nullable=False),
+        sa.Column("password_hash", sa.String(length=255), nullable=False),
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.func.now()),
         sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.func.now()),
         sa.UniqueConstraint("email"),
