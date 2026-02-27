@@ -27,6 +27,7 @@ class User(Base, TimestampMixin):
     last_name: Mapped[str] = mapped_column(String(100), nullable=False)
     email: Mapped[str] = mapped_column(String(255), nullable=False, unique=True, index=True)
     role: Mapped[UserRole] = mapped_column(Enum(UserRole, name="user_role"), nullable=False)
+    password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
 
     organization = relationship("Organization", back_populates="users")
     managed_requisitions = relationship("Requisition", back_populates="hiring_manager")
